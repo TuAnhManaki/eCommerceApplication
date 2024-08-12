@@ -34,7 +34,7 @@ public class OrderController {
 	public ResponseEntity<UserOrder> submit(@PathVariable String username) {
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
-			log.warn("Cannot submit order. Error 404: user not found");
+			log.warn("Cannot submit order. user not found");
 			return ResponseEntity.notFound().build();
 		}
 		UserOrder order = UserOrder.createFromCart(user.getCart());
@@ -47,7 +47,7 @@ public class OrderController {
 	public ResponseEntity<List<UserOrder>> getOrdersForUser(@PathVariable String username) {
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
-			log.warn("Cannot retrieve orders for user. Error 404: user not found");
+			log.warn("Cannot orders for user. user not found");
 			return ResponseEntity.notFound().build();
 		}
 		log.info("Order history retrieved for user");

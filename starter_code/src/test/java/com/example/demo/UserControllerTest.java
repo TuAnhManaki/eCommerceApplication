@@ -1,9 +1,8 @@
 package com.example.demo;
 
-import static org.mockito.Mockito.when;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,16 +40,32 @@ public class UserControllerTest {
 
     @Test
     public void testFindById() {
-        // Mock the repository response
         User user = new User();
         user.setId(1L);
         when(userRepository.findById(1L)).thenReturn(java.util.Optional.of(user));
 
-        // Call the method and assert the result
         ResponseEntity<User> response = userController.findById(1L);
         assertEquals(1L, response.getBody().getId());
     }
 
+   
+    @Test
+    public void testCreateUser() {
+        when(bCryptPasswordEncoder.encode("password")).thenReturn("hashedPassword");
+
+        Cart cart = new Cart();
+        when(cartRepository.save(any(Cart.class))).thenReturn(cart);
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        CreateUserRequest request = new CreateUserRequest();
+        request.setUsername("testuser");
+        request.setPassword("password");
+
+        ResponseEntity<User> response = userController.createUser(request);
+        assertEquals("testuser", response.getBody().getUsername());
+        assertEquals("hashedPassword", response.getBody().getPassword());
+    }
+    
     @Test
     public void testFindByUserName() {
         // Mock the repository response
@@ -63,23 +78,4 @@ public class UserControllerTest {
         assertEquals("testuser", response.getBody().getUsername());
     }
 
-    @Test
-    public void testCreateUser() {
-        // Mock the encoder and repository responses
-        when(bCryptPasswordEncoder.encode("password")).thenReturn("hashedPassword");
-
-        Cart cart = new Cart();
-        when(cartRepository.save(any(Cart.class))).thenReturn(cart);
-        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
-
-        // Create the request
-        CreateUserRequest request = new CreateUserRequest();
-        request.setUsername("testuser");
-        request.setPassword("password");
-
-        // Call the method and assert the result
-        ResponseEntity<User> response = userController.createUser(request);
-        assertEquals("testuser", response.getBody().getUsername());
-        assertEquals("hashedPassword", response.getBody().getPassword());
-    }
 }
