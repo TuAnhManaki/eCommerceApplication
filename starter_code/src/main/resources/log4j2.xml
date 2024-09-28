@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%style{%d{ISO8601}} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{10}}{bright,yellow}: %msg%n%throwable" />
+        </Console>
+        <SplunkHttp
+                name="splunkSpring"
+                url="http://localhost:8088"
+                token="651c8b53-c6ea-4cf7-982d-0c3eb6ab8d13"
+                host="localhost"
+                index="springspluk"
+                type="raw"
+                source="e-commerce"
+                sourcetype="log4j"
+                messageFormat="text"
+                disableCertificateValidation="true">
+            <PatternLayout pattern="%m" />
+        </SplunkHttp>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="splunkSpring" />
+            <AppenderRef ref="console" />
+        </Root>
+    </Loggers>
+</Configuration>

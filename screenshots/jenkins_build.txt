@@ -1,0 +1,89 @@
+Started by user Anh tu
+Running as SYSTEM
+Building in workspace /var/lib/jenkins/workspace/deploy website
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/deploy website/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/TuAnhManaki/eCommerceApplication # timeout=10
+Fetching upstream changes from https://github.com/TuAnhManaki/eCommerceApplication
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+ > git fetch --tags --force --progress -- https://github.com/TuAnhManaki/eCommerceApplication +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision a4e52943a994c022a8e73c37afd6837810748d62 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a4e52943a994c022a8e73c37afd6837810748d62 # timeout=10
+Commit message: "Delete starter_code/Jenkinsfile"
+ > git rev-list --no-walk 5083cc91da5036cdd1bdb243aeeaa2234132575a # timeout=10
+Parsing POMs
+Established TCP socket on 40441
+[starter_code] $ /bin/java -cp /var/lib/jenkins/plugins/maven-plugin/WEB-INF/lib/maven35-agent-1.14.jar:/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_Home/boot/plexus-classworlds-2.8.0.jar:/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_Home/conf/logging jenkins.maven3.agent.Maven35Main /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_Home /var/lib/jenkins/%C/jenkins/war/WEB-INF/lib/remoting-3248.3250.v3277a_8e88c9b_.jar /var/lib/jenkins/plugins/maven-plugin/WEB-INF/lib/maven35-interceptor-1.14.jar /var/lib/jenkins/plugins/maven-plugin/WEB-INF/lib/maven3-interceptor-commons-1.14.jar 40441
+<===[JENKINS REMOTING CAPACITY]===>channel started
+Executing Maven:  -B -f /var/lib/jenkins/workspace/deploy website/starter_code/pom.xml clean install -DskipTests
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example:auth-course:war:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.version' for org.junit.jupiter:junit-jupiter:jar is either LATEST or RELEASE (both of them are being deprecated) @ line 93, column 13
+[WARNING] 'dependencies.dependency.version' for org.junit.jupiter:junit-jupiter:jar is either LATEST or RELEASE (both of them are being deprecated) @ line 99, column 13
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.junit.jupiter:junit-jupiter:jar -> duplicate declaration of version RELEASE @ line 96, column 15
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ----------------------< com.example:auth-course >-----------------------
+[INFO] Building auth-course 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/maven-metadata.xml (1.8 kB at 3.2 kB/s)
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ auth-course ---
+[INFO] Deleting /var/lib/jenkins/workspace/deploy website/starter_code/target
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ auth-course ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to /var/lib/jenkins/workspace/deploy website/starter_code/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/deploy website/starter_code/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ auth-course ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /var/lib/jenkins/workspace/deploy website/starter_code/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.22.2:test (default-test) @ auth-course ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- war:3.2.2:war (default-war) @ auth-course ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [auth-course] in [/var/lib/jenkins/workspace/deploy website/starter_code/target/auth-course-0.0.1-SNAPSHOT]
+[INFO] Processing war project
+[INFO] Webapp assembled in [273 msecs]
+[INFO] Building war: /var/lib/jenkins/workspace/deploy website/starter_code/target/auth-course-0.0.1-SNAPSHOT.war
+[INFO] 
+[INFO] --- spring-boot:2.1.5.RELEASE:repackage (repackage) @ auth-course ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ auth-course ---
+[INFO] Installing /var/lib/jenkins/workspace/deploy website/starter_code/target/auth-course-0.0.1-SNAPSHOT.war to /var/lib/jenkins/.m2/repository/com/example/auth-course/0.0.1-SNAPSHOT/auth-course-0.0.1-SNAPSHOT.war
+[INFO] Installing /var/lib/jenkins/workspace/deploy website/starter_code/pom.xml to /var/lib/jenkins/.m2/repository/com/example/auth-course/0.0.1-SNAPSHOT/auth-course-0.0.1-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.778 s
+[INFO] Finished at: 2024-09-28T01:56:29Z
+[INFO] ------------------------------------------------------------------------
+Waiting for Jenkins to finish collecting data
+[JENKINS] Archiving /var/lib/jenkins/workspace/deploy website/starter_code/pom.xml to com.example/auth-course/0.0.1-SNAPSHOT/auth-course-0.0.1-SNAPSHOT.pom
+[JENKINS] Archiving /var/lib/jenkins/workspace/deploy website/starter_code/target/auth-course-0.0.1-SNAPSHOT.war to com.example/auth-course/0.0.1-SNAPSHOT/auth-course-0.0.1-SNAPSHOT.war
+channel stopped
+Finished: SUCCESS
